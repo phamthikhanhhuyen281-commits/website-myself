@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu Về Tôi - Khánh Huyền</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-light: #ecf0f1;
+            --text-dark: #2c3e50;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden; /* Ngăn cuộn ngang */
+        }
+
+        /* --- Video Background --- */
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh; /* Chiều cao đầy đủ của màn hình */
+            overflow: hidden;
+            z-index: -1; /* Đặt video dưới cùng */
+        }
+
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover; /* Đảm bảo video lấp đầy không gian */
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6); /* Lớp phủ đen trong suốt */
+            z-index: -1;
+        }
+
+        /* --- Header / Hero Section --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-light);
+            text-align: center;
+            padding: 0 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.5rem;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: zoomIn 1.5s ease-out;
+        }
+
+        .hero .btn:hover {
+            background: #2980b9;
+            transform: translateY(-5px);
+        }
+
+        /* --- About Section --- */
+        .about-section {
+            background-color: white;
+            padding: 80px 8%;
+            text-align: center;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
+            position: relative; /* Để chống lại video background */
+        }
+
+        .about-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            flex: 2;
+            min-width: 300px;
+            text-align: left;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .profile-image {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        /* --- Skills Section --- */
+        .skills-section {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .skills-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 40px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px); /* Hiệu ứng kính mờ */
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .skill-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .hero p { font-size: 1.2rem; }
+            .about-section h2, .skills-section h2 { font-size: 2rem; }
+            .about-content { flex-direction: column; }
+            .about-text, .profile-image { min-width: unset; max-width: 100%; }
+            .about-text { text-align: center; }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-young-man-walking-in-a-forest-47963-large.mp4" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ video.
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <header class="hero">
+        <h1>Chào, tôi là Khánh Huyền!</h1>
+        <p>Tôi là một người yêu thích học hỏi, luôn tìm tòi những điều mới mẻ và đam mê phát triển bản thân.</p>
+        <a href="#about" class="btn">Tìm hiểu thêm về tôi</a>
+    </header>
+
+    <section id="about" class="about-section">
+        <h2>Về tôi</h2>
+        <div class="about-content">
+            <div class="profile-image">
+                <img src="https://via.placeholder.com/300x300?text=Your+Photo" alt="Ảnh cá nhân của Khánh Huyền">
+            </div>
+            <div class="about-text">
+                <h3>Khánh Huyền - Người luôn sẵn sàng khám phá!</h3>
+                <p>Tôi là một học sinh năng động, thích nghi nhanh với môi trường mới. Tôi luôn tò mò về thế giới xung quanh và không ngừng học hỏi để nâng cao kiến thức của mình.</p>
+                <p>Ngoài việc học, tôi còn có niềm yêu thích đặc biệt với các hoạt động sáng tạo như vẽ tranh, làm đồ thủ công và đọc sách. Tôi tin rằng mỗi ngày là một cơ hội để phát triển và hoàn thiện bản thân.</p>
+                <p>Mục tiêu của tôi là trở thành một người có ích cho cộng đồng, mang lại những giá trị tích cực cho mọi người.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills-section">
+        <h2>Sở thích & Kỹ năng</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fas fa-palette"></i>
+                <h3>Sáng tạo & Nghệ thuật</h3>
+                <p>Yêu thích vẽ, thiết kế và các hoạt động thủ công.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-book-reader"></i>
+                <h3>Học hỏi & Nghiên cứu</h3>
+                <p>Thích đọc sách, tìm hiểu kiến thức mới trong nhiều lĩnh vực.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-code"></i>
+                <h3>Công nghệ & Lập trình</h3>
+                <p>Đang tìm hiểu về lập trình web và các công cụ công nghệ.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-comments"></i>
+                <h3>Giao tiếp & Làm việc nhóm</h3>
+                <p>Thích kết nối, trao đổi và hợp tác cùng mọi người.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Khánh Huyền. All rights reserved.</p>
+        <p>Liên hệ: <a href="mailto:emailcuaban@example.com">emailcuaban@example.com</a></p>
+    </footer>
+
+</body>
+</html>
