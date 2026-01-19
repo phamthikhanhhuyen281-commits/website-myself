@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Academy - Khám Phá Tương Lai</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #00b4db, #0083b0);
+            --accent-color: #ffce00;
+            --glass: rgba(255, 255, 255, 0.2);
+            --text-dark: #2c3e50;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f4f8;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Header & Nav */
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            position: fixed;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #0083b0;
+            letter-spacing: 1px;
+        }
+
+        /* Banner cực ngầu với hiệu ứng Parallax nhẹ */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1541339907198-e08756ebafe3?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        /* Nút bấm nổi bật */
+        .btn {
+            margin-top: 25px;
+            padding: 12px 35px;
+            background: var(--accent-color);
+            color: #333;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 206, 0, 0.4);
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            background: #fff;
+        }
+
+        /* Section Thư viện/CLB với Grid cực đẹp */
+        .content-section {
+            padding: 100px 8%;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card h3 {
+            color: #0083b0;
+            margin-bottom: 15px;
+        }
+
+        /* Hiệu ứng hoạt ảnh */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">SKY ACADEMY</div>
+        <div class="menu-dot">● ● ●</div>
+    </nav>
+
+    <section class="hero">
+        <h1>Vươn Tới Ước Mơ</h1>
+        <p>Hành trình chinh phục tri thức và phát triển đam mê bắt đầu từ đây.</p>
+        <a href="#kham-pha" class="btn">Khám Phá Ngay</a>
+    </section>
+
+    <section id="kham-pha" class="content-section">
+        <h2 style="font-size: 2.5rem; color: #0083b0;">Môi Trường Tuyệt Vời</h2>
+        <p>Chúng tôi mang đến những trải nghiệm học tập và giải trí đẳng cấp nhất.</p>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="card-body">
+                    <h3>📚 Thư Viện Số</h3>
+                    <p>Hàng ngàn đầu sách và không gian làm việc sáng tạo hiện đại.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="card-body">
+                    <h3>🎸 CLB Âm Nhạc</h3>
+                    <p>Nơi thăng hoa cảm xúc với phòng thu và các loại nhạc cụ đa dạng.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="card-body">
+                    <h3>⚽ CLB Thể Thao</h3>
+                    <p>Phát triển thể chất với
